@@ -1,0 +1,161 @@
+%
+% This is a borrowed LaTeX template file for lecture notes for CS267,
+% Applications of Parallel Computing, UCBerkeley EECS Department.
+% Now being used for CMU's 10725 Fall 2012 Optimization course
+% taught by Geoff Gordon and Ryan Tibshirani.  When preparing
+% LaTeX notes for this class, please use this template.
+%
+% To familiarize yourself with this template, the body contains
+% some examples of its use.  Look them over.  Then you can
+% run LaTeX on this file.  After you have LaTeXed this file then
+% you can look over the result either by printing it out with
+% dvips or using xdvi. "pdflatex template.tex" should also work.
+%
+
+\documentclass[UTF8,oneside]{article}
+
+\usepackage[UTF8,scheme=plain]{ctex}
+% \usepackage[AutoFakeBold,AutoFakeSlant]{xeCJK}  % 载入 xeCJK以支持中文，支持伪粗体，伪斜体
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{float, bm}
+
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,graphicx}
+\usepackage{etoolbox}
+\AtBeginEnvironment{proof}{\normalsize}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf Combination Math
+	\hfill 2024 Fall} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill HW #1  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Student: #2 \hfill Time: #3} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+\begin{document}
+
+\fontsize{12pt}{24pt}
+
+\section{问题} 求出83674521之前第2024个排列.
+
+\section{字典序法}
+
+首先求出83674521的序号的康托展开为:
+\[
+    7 \times 7! + 2 \times 6! + 4 \times 5! + 4\times 4! + 2\times 3! + 2\times 2! + 1\times 1!
+\]
+对应2024的康托展开为:
+\[
+    2 \times 6! + 4\times 5! + 4\times 4! + 1 \times 3! + 1\times 2!
+\]
+于是得到所求目标的排列的康托展开为:
+\[
+    7 \times 7! + 1\times 3! + 1\times 2! + 1\times 1!
+\]
+于是所求目标的中介数是7000111, 根据中介数, 可得对应的排列为81235674.
+
+\section{递增进位制数法}
+
+83674521的中介数为$(7442221)\uparrow$, 计算序号为:
+\[
+    7 \times 7! + 4\times 6! + 4\times 5! + 2\times 4! + 2\times 3! + 2\times 2! + 1\times 1!
+\]
+减去2024后目标序号为:
+\[
+    7 \times 7! + 1\times 6! + 5\times 5! + 3\times 4！ + 1\times 3! + 1\times 2! + 1\times 1!
+\]
+对应新中介数为$(7153111)\uparrow$, 可得对应的排列为86253471.
+
+\section{递减进位制数法}
+
+83674521的中介数为$(1222447)\downarrow$, 减去2024对应$(11010)\downarrow$, 相减后后新中介数为$(1211437)\downarrow$, 可得对应的排列为83627451.
+
+\section{邻位对换法}
+
+设目标中介数为$(b_2b_3b_4b_5b_6b_7b_8)\downarrow$, 初始2的方向向左，即$
+    \overset{}{8}\overset{}{3}\overset{}{6}\overset{}{7}\overset{}{4}\overset{}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_2=1$；
+
+$i=3$, $b_2$为奇数, 所以3的方向向右,得$
+    \overset{}{8}\overset{\rightarrow}{3}\overset{}{6}\overset{}{7}\overset{}{4}\overset{}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_3=0$；
+
+$i=4$, $b_3+b_2$为奇数, 所以4的方向向右,得$
+    \overset{}{8}\overset{\rightarrow}{3}\overset{}{6}\overset{}{7}\overset{\rightarrow}{4}\overset{}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_4=1$；
+
+$i=5$, $b_4$为奇数, 所以5的方向向右,得$
+    \overset{}{8}\overset{\rightarrow}{3}\overset{}{6}\overset{}{7}\overset{\rightarrow}{4}\overset{\rightarrow}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_5=2$；
+
+$i=6$, $b_5+b_4$为奇数, 所以6的方向向右,得$
+    \overset{}{8}\overset{\rightarrow}{3}\overset{\rightarrow}{6}\overset{}{7}\overset{\rightarrow}{4}\overset{\rightarrow}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_6=1$；
+
+$i=7$, $b_6$为奇数, 所以7的方向向右,得$
+    \overset{}{8}\overset{\rightarrow}{3}\overset{\rightarrow}{6}\overset{\rightarrow}{7}\overset{\rightarrow}{4}\overset{\rightarrow}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_7=2$；
+
+$i=8$, $b_7+b_6$为奇数, 所以8的方向向右,得$
+    \overset{\rightarrow}{8}\overset{\rightarrow}{3}\overset{\rightarrow}{6}\overset{\rightarrow}{7}\overset{\rightarrow}{4}\overset{\rightarrow}{5}\overset{\leftarrow}{2}\overset{\leftarrow}{1}
+$,可得$b_8=0$；
+
+于是求得中介数为$(1012120)\downarrow$, 减去2024对应$(11010)\downarrow$, 相减后后新中介数为$(1001110)\downarrow$, 可得对应的排列为47632518.
+
+\end{document}
+
+
+
+
+

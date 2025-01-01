@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{ctex}
+\usepackage{titlesec}  % For customizing section titles
+\usepackage{amsmath,amssymb}
+\usepackage{fontspec} % Allows font customization in XeLaTeX
+
+\usepackage[a4paper, margin=1in]{geometry} % Adjust margins here (1 inch in this case)
+
+\title{组合数学HW2}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{2.1.}
+
+反证法，假定不存在这样的子集。即存在$P1\cup P2\cup P3 \cup P4\cup P5=[1,326]$，$P_i$中不存在一个数为$P_i$中两数之差。至少有一个子集包含$\lceil\frac{326}{5}\rceil=66$个元素，不妨设为$A=\{a_1, ..., a_{66}\}\subset P_1$，其中$a_1-a_{66}$递增。\\
+令$b_{i-1}=a_i-a_1$，设$B=\{b_1,...,b_{65}\}\in[1,326]$，由假设可得$B\subset P_2\cup P_3\cup p_4\cup P_5$。$\lceil\frac{65}{4}\rceil=17$，不妨设$\{b_1,...,b_{17}\}\subset P_2$，令$c_{i-1}=b_i-b_1$，设$C=\{c_1,...,c_{16}\}\in [1,326]$，由假设得$C\subset (P_3\cup P_4\cup P_5)$。 \\
+又$\lceil\frac{16}{3}\rceil=6$，不妨设$\{c_1,...,c_{6}\}\subset P_3$，令$d_{i-1}=c_i-c_1$，设$D=\{d_1,...,d_5\}\in [1,326]$，由假设得$D\subset P_4\cup P_5$。
+又$\lceil\frac{5}{2}\rceil=3$，不妨设$\{d_1,d_2,d_3\}\subset P_4$，令$e_{i-1}=d_i-d_1$，设$E=\{e_1,e_2\}\in [1,326]$，由假设得$E\subset P_5$，而根据假设又$e_2-e_1\notin P_5$，矛盾，故原命题得证。
+
+\subsection*{2.2.}
+
+对于每个实数，可以对应到一个$\theta$，满足：
+\[
+x_i = \tan \theta_i, \quad \theta_i \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right).
+\]
+
+原不等式可以转换为：
+\[
+0 < \tan(\theta_i - \theta_j) \leq 2 - \sqrt{3}.
+\]
+
+进一步可得：
+\[
+\theta_i - \theta_j \in \left(0, \frac{\pi}{12}\right].
+\]
+
+将$\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$均分为12个区间，因为总共有13个实数，一定有两个实数会落在同一个区间，两者之差落在$\left(0, \frac{\pi}{12}\right]$，原不等式得证。
+
+\subsection*{2.3.}
+
+任意选择两行总共有$\binom{m+1}{2}$种选择，颜色相同的组合共有$m\cdot \binom{m+1}{2}$个。
+
+而总共有$m\cdot \binom{m+1}{2}+1$列，那么必有两列，其存在两行在这两列颜色相同，那么选取这两列两行所形成的矩形其四个角的颜色都相同，原命题得证。
+
+\subsection*{2.4.}
+
+将除10的余数$0-9$进行分类，分为$\{0\},\{5\},\{1,9\},\{2,8\},\{3,7\},\{4,6\}$共6类，7个数放进6类，必有两个数在同一类中。
+
+若都在$\{0\}$类，那么两者相减或相加均能被10整除。
+
+若都在$\{5\}$类，那么两者相减或相加均能被10整除。
+
+若在剩下的类，两者相加可被10整除。
+
+故原命题得证。
+
+\subsection*{2.5.}
+
+将$\frac{p}{q}$转化为任意进制$s$的过程如下：
+
+1. $\frac{p}{q}=Iq+r_0$，其中$I$为整数部分，$r_0$是余数部分。
+
+2. 将余数$r_0$乘以$s$，然后再除$q$，即$r_0\cdot s=d_1 q+r_1$，其中$d_1$是小数部分的第一个数字，$r_1$是新的余数。
+
+3. 重复上述步骤。因为余数只有$0-q-1$共$q$种可能，故最多经过$q+1$步，余数就会出现重复，一旦余数开始重复，那么小数部分就开始循环。若某一步余数为0，则为有限小数。
+
+故原命题得证。
+
+
+
+\end{document}

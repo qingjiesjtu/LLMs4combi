@@ -1,0 +1,197 @@
+\documentclass[12pt,letterpaper, onecolumn]{exam}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ctex}
+\usepackage[lmargin=71pt, tmargin=1.2in]{geometry}  %For centering solution box
+% \lhead{Leaft Header\\}
+% \rhead{Right Header\\}
+% \chead{\hline} % Un-comment to draw line below header
+\thispagestyle{empty}   %For removing header/footer from page 1
+
+\begin{document}
+
+\begingroup  
+    \centering
+    \LARGE 组合数学\\
+    \LARGE 第一章习题（基本）
+\endgroup
+\rule{\textwidth}{0.4pt}
+\pointsdroppedatright   %Self-explanatory
+\printanswers
+\renewcommand{\solutiontitle}{\noindent\textbf{解:}\enspace}   %Replace "解:" with starting keyword in solution box
+
+\begin{questions}
+%1.1
+ \question $m$ 个男生和 $n$ 个女生排成一行（$m,n$均为正整数），若
+    \begin{parts}
+        \part 任何两个男生不相邻（$m \leq n + 1$）;
+        \part $n$ 个女生形成一个整体（即任何两个女生之间没有男生）;
+        \part 男生 $A$ 和女生 $B$ 相邻.
+    \end{parts}
+    分别讨论有多少种方案.
+    \begin{solution}
+        \begin{parts}
+            \part $n$个女生有$n!$种排列;\\
+                  其中形成了$n+1$个空位，可以插入男生有$A_{n+1}^m$种排列;\\
+                  为此，有$n!A_{n+1}^m$种方案。
+                  
+            \part $n$个女生有$n!$种排列;\\
+                  一个整体以及$m$个男生共有$(m+1)!$种排列;\\
+                  为此有$n(m+1)!$种方案。
+                  
+            \part 男生$A$和女生$B$相邻当成一个整体有2种排列,当成一个整体;\\
+                  一个整体、$m-1$个男生和$n-1$个女生，共有$[1+(m-1)+(n-1)]!=(m+n-1)!$种排列;\\
+                  为此，有$2(m+n-1)!$种方案
+        \end{parts}
+    \end{solution}
+    
+%1.2
+ \question $6$ 个男生和 $5$ 个女生围在一圆桌旁，若
+    \begin{parts}
+        \part 任何两个女生不相邻;
+        \part 所有女生形成一个整体;
+        \part 女生$A$两侧均是男生．
+    \end{parts}
+    分别讨论有多少种方案.
+    \begin{solution}
+        \begin{parts}
+            \part $6$个男生有$\frac{6!}{6}=5!$种圆排列;\\
+                  其中形成了$6$个空位，可以插入女生有${6\choose 5}=6$种情况;\\
+                  $5$个女生有$5!$种排列。\\
+                  为此，有$5!\times6\times5!=86400$种方案。
+            \part $5$个女生有$5!$种排列;\\
+                  一个整体以及$6$个男生共有$\frac{7!}{7}=6!$种圆排列;\\
+                  为此有$5!\times6!=86400$种方案。
+            \part 女生$A$两侧均是男生有$6\times5=30$种情况，当成一个整体;
+                  一个整体和4个男生，4个女生的圆排列为$\frac{9!}{9}=8!$
+                  为此有$30\times8!=1209600$种方案。
+        \end{parts}
+    \end{solution}
+
+%1.3
+ \question 计算：$\sum_{k = 1}^{n} k\cdot k!=1\cdot1!+2\cdot2!+\cdots+n\cdot 
+                n\cdot n!$
+    \begin{solution}
+        原式\\
+        $=\sum_{k = 1}^{n} (k+1-1)\cdot k!$\\
+        $=\sum_{k = 1}^{n} (k+1)!-\sum_{k = 1}^{n} k!$\\
+        $=(n+1)!-1$
+    \end{solution}
+
+%1.4
+ \question 求$10^{40}$与$20^{30}$的公因数的数目.
+    \begin{solution}
+        $10^{40}=2^{40}\times5^{40};20^{30}=2^{60}\times5^{30}$\\
+        $2$有41种选择，$5$有31种选择\\
+        所以公因数数目为$41\times31=1271$
+    \end{solution}
+
+%1.5
+ \question  求从$1$到$1000000$的整数的十进制表示中，数字$0$出现的总次数．
+    \begin{solution}
+        
+        一位数:共0次\\
+        二位数:共9次\\
+        三位数:个位为0有90次,十位为0有90次，共180次\\
+        四位数:个位为0有900次,十位为0有900次,百位为0有900次,共2700次\\
+        五位数:共$9000\times4=36000$次\\
+        六位数:共$90000\times5=450000$次\\
+        $1000000$：6次\\
+        共$9+180+2700+36000+450000+6=488895$次
+    \end{solution}
+
+%1.6
+ \question   将$n$个相同的小球放入$r$个不同的盒子中$(n\geq r)$，禁止出现空盒，求方案数．
+    \begin{solution}
+        即$x_1+x_2+\cdots+x_r=n$的正整数解个数:\\
+        为此,方案数为$C_{n-1}^{r-1}$
+    \end{solution}
+
+
+%1.7
+ \question   将$n$个相同的小球放入$r$个不同的盒子中，每盒中至少$k$个球$(n\geq rk)$，求方案数．
+    \begin{solution}
+        即$x_1+x_2+\cdots+x_r=n$且$x_i\geq k,(i=1,2,3\cdots r)$的正整数解个数:\\
+        令$y_i=x_i-k+1,(i=1,2,3\cdots r)$\\
+        则转化为求$y_1+y_2+\cdots+y_r=n-rk+r$且$x_i\geq k(i=1,2,3\cdots r)$的正整数解个数:\\
+        为此,方案数为$C_{n-rk+r-1}^{r-1}$
+    \end{solution}
+
+%1.8
+ \question    8 个盒子排成一列，将5个不同的小球放入这些盒子，要求空盒不相邻，求方案数．
+    \begin{solution}
+        设有$i$个盒子有球$i\leq 5$，则有$8-i$个空盒。要求空盒不相邻,则$i > (8-i)-1\Rightarrow i> 3$.\\
+        $i=4$或$5$\\
+        当$i=4$时，从8个当中选4个不相邻空盒有$C_5^4$个方法；4个盒子均至少有一个小球，有$C_5^2 \times 4!$种情况；方案数为$C_5^2 \times 4!=240$\\
+        当$i=5$时，从8个当中选3个不相邻空盒有$C_6^3$个方法；5个盒子均有一个小球，5个球有$5!$种排列；方案数为$C_6^3 \times 5!=2400$\\
+        综上，方案数为$240+2400=2640$种
+    \end{solution}
+
+%1.9
+\question 设 \(A=\{(a,b)\mid a,b\in\mathbb{Z},0\leq a\leq9,0\leq b\leq5\}\)。求 \(xOy\)平面上以 \(A\)中的点为四个顶点、四边与坐标轴平行的正方形数目。
+    \begin{parts}
+        \part 求 \(xOy\)平面上以 \(A\)中的点为四个顶点、四边与坐标轴平行的长方形数目；
+        \part 求 \(xOy\)平面上以 \(A\)中的点为四个顶点、四边与坐标轴平行的正方形数目。
+    \end{parts}
+
+    \begin{solution}
+        \begin{parts}
+            \part 平行于$x$轴的边有10个顶点，边有$C_10^2=45$种选法\\
+                  平行于$y$轴的边有6个顶点，边有$C_6^2=15$种选法\\
+                  所以长方形数目为$45\times 15=675$个
+            \part 边长$=1$，有$9 \times 5 =45$个\\
+                  边长$=2$，有$8 \times 4 =32$个\\
+                  边长$=3$，有$7 \times 3 =21$个\\
+                  边长$=4$，有$6 \times 2 =12$个\\
+                  边长$=5$，有$5 \times 1 =5$个\\
+                  所以长方形数目为$115$个
+        \end{parts}
+    \end{solution}
+
+%1.10
+\question 分别求从如下多重集中选取 $n$ 个元素的方案数：
+
+    \begin{parts}
+        \part 大小为 $2n$ 的多重集\(\{n\cdot0,1,2,\cdots,n\}\);
+        \part 大小为 $3n + 1$ 的多重集\(\{n\cdot0,1,2,\cdots,2n + 1\}\)。
+    \end{parts}
+
+    \begin{solution}
+        \begin{parts}
+            \part 设取了$i$个0\\
+                  则$\sum_{i=0}^nC_n^{n-i}=\sum_{i=0}^n C_n^i=2^n$
+            \part 设取了$i$个0\\
+                  则$\sum_{i=0}^n C_{2n+1}^{n-i}$\\
+                  $=\sum_{i=0}^n C_{2n+1}^{n+i+1}$\\
+                  $=\frac{1}{2} (\sum_{i=0}^nC_{2n+1}^{n-i} +\sum_{i=0}^n C_{2n+1}^{n+i+1})$\\
+                  $=\frac{1}{2} \sum_{i=0}^{2n+1}C_{2n+1}^i$\\
+                  $=2^{2n+1}$
+        \end{parts}
+    \end{solution}
+
+
+%1.11
+ \question    5 台教学机器编号为1,2,3,4,5分配给$m$名学生使用，使用第1台和第2台的人数相等，求分配方案数．
+    \begin{solution}
+        设第$1$台机器选$k$个人使用:$C_m^k$\\
+        则第$2$台机器选$k$个人使用:$C_{m-k}^k$\\
+        后面3台分配情况为为$3^{m-2k}$\\
+        所以总的方案数为：$\sum_{k=0}^{[\frac{m}{2}]} 3^{m-2k}C_m^k C_{m-k}^k $
+        
+    \end{solution}
+
+
+
+%1.12
+ \question   设由\(n\)个\(0\)和\(n\)个\(1\)构成的\(2n\)位二进制串，要求任意前\(k\)位中\(0\)的数目不少于\(1\)的数目\((1\leq k\leq 2n)\)，求满足要求的二进制串的数目。
+    \begin{solution}
+        即求从点$(0,0)$移动到$(n,n)$,且因为第一个数只能是0，不妨设第一步向上移动，可以接触但是不能穿过$y=x$的数目:\\
+        $C_{2n}^n-C_{2n}^{n-1}=\frac{1}{n+1}C_{2n}^n$\\
+        所以满足要求的二进制串数目为$\frac{1}{n+1}C_{2n}^n$
+    \end{solution}
+
+
+
+
+\end{questions}
+\end{document}

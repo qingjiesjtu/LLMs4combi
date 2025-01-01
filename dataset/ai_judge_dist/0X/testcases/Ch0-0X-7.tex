@@ -1,0 +1,129 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{CJKutf8}
+\usepackage{enumitem}
+\usepackage{graphicx}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+ 
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Combinatorics Homework 1}
+\maketitle
+
+\noindent\textbf{方法 1: 字典序法}
+
+83674521 前面的排列数为: $7 \times 7! + 2 \times 6! + 4 \times 5! + 4 \times 4! + 2 \times 3! + 2 \times 2! + 1 \times 1!$
+
+则中介数为: $(7244221)\uparrow$
+
+2024 前面的排列数为: $2 \times 6! + 4 \times 5! + 4 \times 4! + 1 \times 3! + 1 \times 2! + 0 \times 0$
+
+则中介数为: $(244110)\uparrow$
+
+故对应的全排列数为: $(7244221)\uparrow - (244110)\uparrow = (7000111)\uparrow = 81235674$
+
+\vspace{10pt}
+
+\noindent\textbf{方法 2: 递增进位制数法}
+
+83674521 的中介数为: $(7442221)\uparrow$
+
+故对应的全排列数为: $(7442221)\uparrow - (244110)\uparrow = (7153111)\uparrow = 82653471$
+
+\vspace{10pt}
+
+\noindent\textbf{方法 3: 递减进位制数法}
+
+83674521 的中介数为: $(7442221)\uparrow = (1222447)\downarrow$
+
+$2024 = 253 \times 8 + 0$
+
+$253 = 36 \times 7 + 1$
+
+$36 = 6 \times 6 + 0$
+
+$6 = 1 \times 5 + 1$
+
+故 $2024 = (11010)\downarrow$
+
+故对应的全排列数为: $(1222447)\downarrow - (11010)\downarrow = (1211437)\downarrow = 85726431$
+
+\vspace{10pt}
+
+\noindent\textbf{方法 4: 邻位对换法}
+
+$P = \overrightarrow{8}\overrightarrow{3}\overrightarrow{6}\overrightarrow{7}\overrightarrow{4}\overrightarrow{5}\overleftarrow{2}1$
+
+2: $\leftarrow$，$b_{2} = 1$
+
+3: $b_{2}$ 为奇 $\rightarrow$，$b_{3} = 0$
+
+4: $b_{2} + b_{3}$ 为奇 $\rightarrow$，$b_{4} = 1$
+
+5: $b_{4}$ 为奇 $\rightarrow$，$b_{5} = 2$
+
+6: $b_{4} + b_{5}$ 为奇 $\rightarrow$，$b_{6} = 1$
+
+7: $b_{6}$ 为奇 $\rightarrow$，$b_{7} = 2$
+
+8: $b_{6} + b_{7}$ 为奇 $\rightarrow$，$b_{8} = 0$
+
+故对应的全排列数为: $(1012120)\downarrow - (11010)\downarrow = (1001110)\downarrow$
+
+对于 $(1001110)\downarrow$:
+
+2: $\leftarrow$，$b_{2} = 1$
+
+3: $b_{2}$ 为奇 $\rightarrow$，$b_{3} = 0$
+
+4: $b_{2} + b_{3}$ 为奇 $\rightarrow$，$b_{4} = 0$
+
+5: $b_{4}$ 为偶 $\leftarrow$，$b_{5} = 1$
+
+6: $b_{4} + b_{5}$ 为奇 $\rightarrow$，$b_{6} = 1$
+
+7: $b_{6}$ 为奇 $\rightarrow$，$b_{7} = 1$
+
+8: $b_{6} + b_{7}$ 为奇 $\rightarrow$，$b_{8} = 0$
+
+方向为 $(\overleftarrow{1}\overrightarrow{0}\overrightarrow{0}\overleftarrow{1}\overrightarrow{1}\overrightarrow{1}\overrightarrow{0})\downarrow$
+
+故对应的新排列数为: $\overrightarrow{8}\overrightarrow{4}\overrightarrow{7}\overrightarrow{6}\overrightarrow{3}\overleftarrow{2}\overleftarrow{5}1$
+
+\vspace{10pt}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+
+\end{CJK}
+\end{document}

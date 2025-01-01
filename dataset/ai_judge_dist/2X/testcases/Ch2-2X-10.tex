@@ -1,0 +1,119 @@
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.1}
+
+假设存在5个子集为$A,B,C,D,E$，使得每个集合都没有数能表示成集合中两数的差，
+其中至少有一个集合元素个数$\geq \lfloor\frac{326}{5}\rfloor+1=66$，设集合$A=\{a_j\}$
+
+则对于$a_{j}-a_1(j=2,...,66)$这65个元素，都不位于$A$中，因此都位于剩下4个子集中，则至少有一个集合元素个数$\geq \lfloor\frac{65}{4}\rfloor+1=17$，设集合$B=\{b_j\}$
+
+则对于$b_{j}-b_1(j=2,...,17)$这16个元素，都不位于$B$中，并且因为$b_{i}-b_{j}=(a_{k}-a_{1})-(a_{l}-a_{1})$，所以不在A中。因此都位于剩下3个子集中，则至少有一个集合元素个数$\geq \lfloor\frac{16}{3}\rfloor+1=6$，设集合$C=\{c_j\}$
+
+则对于$c_{j}-c_1(j=2,...,6)$这5个元素，都不位于$A,B,C$中，因此都位于剩下2个子集中，则至少有一个集合元素个数$\geq \lfloor\frac{5}{2}\rfloor+1=3$，设集合$D=\{d_j\}$
+
+则对于$d_2-d_1,d_3-d_2,d_3-d_1$这3个元素，不位于$A,B,C,D$中，都位于E中，但$d_2-d_1=(d_3-d_1)-(d_3-d_2)$与假设矛盾
+
+所以存在一个集合中的数能表示成该集合中两数的差
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.2}
+
+区间$(-\infty,-1],(-1,0],(0,1],(1,+\infty)$中至少有一个区间包含$\geq \lfloor\frac{13}{4}\rfloor+1=4$
+
+不妨设该4个实数在区间$(0,1]$内
+
+假设该4个实数中${\forall} x>y$有$\frac{x-y}{1+xy} > 2-\sqrt{3}$
+
+考虑3个区间，$A=(0,2-\sqrt{3}],B=(2-\sqrt{3},\frac{\sqrt{3}}{3}],C=(\frac{\sqrt{3}}{3},1]$，至少有两个实数位于同一个区间内
+
+1)若这2个实数在区间A内，$0<y<x<2-\sqrt{3}$
+
+有$\frac{x-y}{1+xy} < \frac{2-\sqrt{3}-0}{1+0} = 2-\sqrt{3}$，矛盾
+
+2)若这两个实数在区间B内，$2-\sqrt{3}<y<x<\frac{\sqrt{3}}{3}$，令$y=x-t$
+
+有$\frac{x-y}{1+xy} = \frac{t}{1+x(x-t)} > 2-\sqrt{3}$
+
+则$x^2-tx+1-(2+\sqrt{3})t < 0$，
+
+但是$x^2-tx+1-(2+\sqrt{3})t \geq 8-2\sqrt{3}-2\sqrt{3}t \geq 0 \ (when\  x=t+2-\sqrt{3}=\frac{\sqrt{3}}{3}$，矛盾
+
+
+% 有$\frac{x-y}{1+xy} < \frac{\frac{\sqrt{3}}{3}-(2-\sqrt{3})}{1+(2-\sqrt{3})^2} = \frac{\sqrt{3}}{6} < 2-\sqrt{3}$，矛盾
+
+3)若这两个实数在区间C内，$\frac{\sqrt{3}}{3}<y<x<1$，令$y=x-t$
+
+有$\frac{x-y}{1+xy} = \frac{t}{1+x(x-t)} > 2-\sqrt{3}$
+
+则$x^2-tx+1-(2+\sqrt{3})t < 0$，
+
+但是$x^2-tx+1-(2+\sqrt{3})t \geq 2-(3+\sqrt{3})t \geq 0 \ (when x=t+\frac{\sqrt{3}}{3}=1)$，矛盾
+
+综上该4个实数在区间$(0,1]$时存在两数满足该不等式。
+
+若4个实数在$(1,+\infty)$区间内则令$x'=\frac{1}{x},y'=\frac{1}{y}$，$\frac{x-y}{1+xy}=\frac{y'-x'}{x'y'+1}$
+若4个实数在$(-\infty，-1)$区间内则令$x'=-\frac{1}{x},y'=-\frac{1}{y}$，$\frac{x-y}{1+xy}=\frac{y'-x'}{x'y'+1}$
+若4个实数在$(-1,0)$区间内则令$x'=y,y'=x$，$\frac{x-y}{1+xy}=\frac{y'-x'}{x'y'+1}$
+
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.3}
+
+由于每列共$m+1$行但共填入m个颜色，对于每列必有$\geq \lfloor\frac{m+1}{m}\rfloor+1=2$个方格颜色相同，这两个方格的行数记为集合${i,j}$
+
+对于任意两行的组合，共$C_{m+1}^2$种组合，一共有$mC_{m+1}^2+1$列，因此存在$\geq \lfloor\frac{mC_{m+1}^2+1}{C_{m+1}^2}\rfloor+1=m+1$列是相同行数组合的两行颜色相同
+
+这m+1列的同色行共有m种颜色，因此存在$\geq \lfloor\frac{m+1}{m}\rfloor+1=2$列的同色行的颜色也相同
+
+这两列两行组成一个同色矩形。
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.4}
+集合$\{0\},\{1,9\},\{2,8\},\{3,7\},\{4,6\},\{5\}$
+7个正整数中除以10的余数在同一个集合的个数$\geq \lfloor\frac{7}{6}\rfloor+1=2$个，这两个正整数满足条件
+
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.5}
+
+若p在q进制下是有限小数，则$p\cdot m^k=0\ (mod\ q)$
+
+若p在q进制下是无限小数，则$p\cdot (m^k-1)=0\ (mod\ q)$
+
+$\forall k, m^k$除以q的余数位于$\{0,1,...,q-1\}$，由鸽巢原理必然存在$m^i$与$m^j$余数相同$(i<j)$，则$m^j-m^i=0\ (mod\ q)$，$m^i(m^{j-i}-1)=0\ (mod\ q)$，若$m^i=0\ (mod\ q)$，则p在q进制下是有限小数；若$m^{j-i}-1=0\ (mod\ q)$，则若p在q进制下是无限小数。
+
+
+\section{进阶A}
+
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.6}
+$a_n=10^{2n}\cdot23+a_{n-1}$
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.7}
+
+(1)考虑$[0,\frac{1}{n-1}),\ [\frac{1}{n-1},\frac{2}{n-1}),\ ...,[\frac{n-2}{n-1},1]$这n-1个区间，存在一个区间包含两个点，这两个点距离小于$\frac{1}{n-1}$
+
+(2)考虑x轴的$[0,\frac{1}{\lfloor\sqrt{n}\rfloor-1}),\ [\frac{1}{\lfloor\sqrt{n}\rfloor-1},\frac{2}{\lfloor\sqrt{n}\rfloor-1}),\ ...,[\frac{\lfloor\sqrt{n}\rfloor-2}{\lfloor\sqrt{n}\rfloor-1},1]$
+
+这$\lfloor\sqrt{n}\rfloor-1$个区间，存在一个区间包含$\geq \lfloor\frac{n}{\lfloor\sqrt{n}\rfloor-1}\rfloor+1=\lfloor\sqrt{n}\rfloor+2$个点，
+
+同理对于y轴的$[0,\frac{1}{\lfloor\sqrt{n}\rfloor-1}),\ [\frac{1}{\lfloor\sqrt{n}\rfloor-1},\frac{2}{\lfloor\sqrt{n}\rfloor-1}),\ ...,[\frac{\lfloor\sqrt{n}\rfloor-2}{\lfloor\sqrt{n}\rfloor-1},1]$
+
+位于x轴同一区间的$\lfloor\sqrt{n}\rfloor+2$个点，必然存在至少2个点位于y轴点同一个区间
+
+这两个点距离小于$\frac{\sqrt{2}}{\lfloor\sqrt{n}\rfloor-1}$
+
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.8}
+
+
+\vspace{5mm} %5mm vertical space
+\noindent{}\textbf{2.10}
+
+除3余数相同的最多2个，否则3个余数相同的数相加和被3整除
+除3余数不同时存在$0,1,2$，否则3个余数为$0,1,2$的数相加和被3整除
+
+因此该集合最多4个元素，符合条件的集合为${1,7,3,9}$

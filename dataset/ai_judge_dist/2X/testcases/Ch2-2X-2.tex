@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} % For mathematical symbols
+\usepackage{amssymb} % For more math symbols
+\usepackage{geometry} % For page layout
+\usepackage{ctex} % 加载 ctex 宏包以支持中文
+\geometry{a4paper, margin=1in}
+
+\title{第二章习题（基本）}
+
+\begin{document}
+
+\maketitle
+
+\section*{2.1}
+将集合 $\{ i \in \mathbb{Z} \mid 1 \leq i \leq 326 \}$ 划分为 5 个子集，证明必有一个子集，其中存在一个数能表示为这个子集中两个数的差。
+\subsection*{解答}
+反证法：设此命题不真，即存在划分
+\[P_{1} \cup P_{2} \cup P_{3} \cup P_{4} \cup P_{5}=[1,326]\]
+$\forall P_{i}$中不存在一个数是$P_{i}$中两数之差，$i=1,2,3,4,5$
+
+因$\lceil\frac{326}{5}\rceil=66$，故有一子集，其中至少有66个数。
+设这66个数从小到大为$a_{1},a_{2},...,a_{66}$，不妨设
+$A=\{a_{1},a_{2},...,a_{66}\} \subseteq P_{1}$。
+
+令$b_{i-1}=a_{i}-a_{1}$，$i=2,...,66$，设$B=\{b_{1},...,b_{65}\}$，$B \subseteq [1,326]$
+
+由反证法假设$B \cap P_{1}=\emptyset$。因而
+\[B \subset (P_{2} \cup P_{3} \cup P_{4} \cup P_{5})\]
+
+因为$\lceil\frac{65}{4}\rceil=17$，不妨设$\{b_{1},...,b_{17}\} \subseteq P_{2}$。
+
+令$c_{i-1}=b_{i}-b_{1}$，$i=1,2,...,16$，设$C=\{c_{1},...,c_{16}\}$，$C \subseteq [1,326]$
+
+因为$c_{i-1}=b_{i}-b_{1}=(a_{i+1}-a_{1})-(a_{2}-a_{1})=a_{i+1}-a_{2}$，
+由反证法假设$C \cap (P_{1} \cup P_{2}) =\emptyset$。因而
+\[C \subset (P_{3} \cup P_{4} \cup P_{5})\]
+
+因为$\lceil\frac{17}{3}\rceil=6$，不妨设$\{c_{1},...,c_{6}\} \subseteq P_{3}$。
+
+令$d_{i-1}=c_{i}-c_{1}$，$i=1,2,...,6$，设$D=\{d_{1},...,d_{5}\}$，$D \subseteq [1,326]$
+
+同理，由反证法假设$D \cap (P_{1} \cup P_{2} \cup P_{3}) =\emptyset$。因而
+\[D \subset (P_{4} \cup P_{5})\]
+
+因为$\lceil\frac{5}{2}\rceil=3$，不妨设$\{d_{1},d_{2},d_{3}\} \subseteq P_{4}$。
+
+令$e_{i-1}=e_{i}-e_{1}$，$i=1,2,3$，设$E=\{e_{1},e_{2}\}$，$E \subseteq [1,326]$
+
+同理，由反证法假设$E \cap (P_{1} \cup P_{2} \cup P_{3} \cup P_{4}) =\emptyset$。因而
+\[E \subset P_{5}\]
+
+由反证法假设$(e_{2}-e_{1}) \notin P_{5}$，且$(e_{2}-e_{1}) \notin (P_{1}\cup P_{2} \cup P_{3} \cup P_{4})$。
+
+故$(e_{2}-e_{1}) \notin [1,326]$，显然与$(e_{2}-e_{1}) \in [1,326]$矛盾。
+
+故得证原命题，将集合 $\{ i \in \mathbb{Z} \mid 1 \leq i \leq 326 \}$ 划分为 5 个子集，必有一个子集，其中存在一个数能表示为这个子集中两个数的差。
+
+\section*{2.2}
+设集合 $A$ 包含 13 个互不相等的实数，证明必定存在 $x, y \in A$，使得
+\[0 < \frac{x - y}{1 + xy} \leq 2 - \sqrt{3}\]
+\subsection*{解答}
+\[\forall x \in \mathbb{R}, \exists \theta \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right), s.t. \tan{\theta} = x\]
+故可以$\forall x \in A$，令$\theta_{x} = \arctan{x}$，代入原命题
+\[\frac{x - y}{1 + xy} = \tan{(\theta_x - \theta_y)}\]
+不妨设$x>y$，由正切函数区间单调性显然有$\theta_{x}>\theta_{y}$。
+
+注意到$\tan{\left( \frac{\pi}{12} \right)} = 2 - \sqrt{3}$，故原命题等价于 
+\[0 < \theta_x - \theta_y \leq \frac{\pi}{12} \]
+
+将$\theta \in \left( -\frac{\pi}{2}, \frac{\pi}{2} \right)$取值范围划分为12个等长的区间，每个区间长度为$\frac{\pi}{12}$。
+由于集合A包含13个互不相等的实数，所以必有至少两个实数$x>y$落入同一区间，使得
+\[0 < \theta_x - \theta_y \leq \frac{\pi}{12} \]
+因此得证。
+
+\section*{2.3}
+$(m+1)$ 行、$\left[ m \binom{m+1}{2} + 1 \right]$列的方格，用 $m$ 种颜色给每个方格染色，证明必能找出一个由方格组成的矩形，其四角的方格染相同颜色。
+\subsection*{解答}
+用$m$种颜色给$(m+1)$行方格染色，每行都至少有两个方格同色，不妨称其为每行的同色方块对。这些同色方格对在$(m+1)$ 行中一共有$\binom{m+1}{2}$种排列位置。
+
+对于各行的方格，同色方块对（颜色，位置）的组合一共有$m \times \binom{m+1}{2}$种。
+
+故而对于$\left[ m \binom{m+1}{2} + 1 \right]$列的方格，一定至少有两行的同色方块对颜色相同且位置相同。
+这两行的同色方块对可以组成一个四角颜色相同的矩形。
+因此得证。
+
+\section*{2.4}
+有 7 个互不相同的正整数，证明其中至少存在 2 个正整数 $a, b$ 使得 $a + b$ 或 $a - b$ 能被 10 除尽。
+\subsection*{解答}
+将所有正整数按被 10 除时的不同余数划分为 10 类，
+\[[k]=\{m \mid m \bmod 10 =k\}, 0 \leq k\leq 9\]
+一共可以组成6个族，分别为
+\[\{[0]\}, \{[5]\}, \{[k], [10-k]\},其中1 \leq k\leq 4\]
+故而 7 个不同的正整数种必有两个整数在同一族中。即其中至少存在 2 个正整数 $a, b$ 使得 $a + b$ 或 $a - b$ 能被 10 除尽。因此得证。
+
+\section*{2.5}
+设 $p \in \mathbb{Z}, q \in \mathbb{Z}^+$，证明分数 $\frac{p}{q}$ 在任意进制下均能表示为有限小数或无限循环小数的形式。
+\subsection*{解答}
+$z_0 = p \div q$是$\frac{p}{q}$的整数部分，$r_0 = p \mod q$是该步骤的余数。
+其后的每位小数$r_{i}$在进制数$b$下的表达式为：$z_{i} = b \times r_{i-1} \div q$。
+注意到：
+\begin{enumerate}
+    \item $b$不变的情况下，$z_{i}$完全取决于上一位的余数$r_{i-1}$。
+    \item 每位余数 $r_{i} \in [0, q-1]$ 且$r_{i} \in \mathbb{N}$，因此可能互不相等的$r_{i}$共有$q$个。
+\end{enumerate}
+
+考虑前$q$步除法的余数$r_{0}, r_{1},...r_{q-1}$：
+如果存在$r_{i}=0$，则$\frac{p}{q}$是一个有限小数。
+如果不存在$r_{i}=0$，则由鸽巢原理，一定存在$r_{i}=r_{j}$。那么由上述两点观察，$r_{i}$和$r_{j}$之后的序列必然完全重复，则$\frac{p}{q}$是一个无限循环小数。
+因此得证。
+
+\end{document}

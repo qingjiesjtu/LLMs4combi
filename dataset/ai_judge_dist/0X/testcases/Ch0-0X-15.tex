@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} % For mathematical symbols
+\usepackage{amssymb} % For more math symbols
+\usepackage{geometry} % For page layout
+\usepackage{ctex} % 加载 ctex 宏包以支持中文
+\geometry{a4paper, margin=1in}
+
+\title{全排列作业}
+
+\begin{document}
+\maketitle
+
+按照课堂上介绍的四种全排列算法，分别求出 83674521 之前第2024个排列。
+
+\section*{字典序法}
+
+中介数$(k_{1}k_{2}...k_{n-1})\uparrow$定义为：$k_{i}$表示当前数字右边比当前数字小的数字的个数。
+
+字典序下83674521对应的中介数为：
+\[83674521 \rightarrow (7244221)\uparrow\]
+
+原中介数之前第2024个的新中介数为：
+\[(7244221)\uparrow-2024 = (7242111)\uparrow\]
+
+新中介数对应的字典序全排列为（从左往右依次逆推）：
+\[(7242111)\uparrow \rightarrow 83642571\]
+
+即字典序下 83674521 之前第2024个排列是 83642571。
+
+\section*{递增进位制数法}
+
+中介数$(a_{n}a_{n-1}...a_{2})\uparrow$定义为：$a_{i}$表示$i$的右边比$i$小的数字的个数。
+
+递增进位制下83674521对应的中介数为：
+\[83674521 \rightarrow (7442221)\uparrow\]
+
+原中介数之前第2024个的新中介数为：
+\[(7442221)\uparrow-2024 = (7440111)\uparrow\]
+
+新中介数对应的递增进位制全排列为（从8到1依次逆推）：
+\[(7440111)\uparrow \rightarrow 82673415\]
+
+即递增进位制下 83674521 之前第2024个排列是 82673415。
+
+\section*{递减进位制数法}
+
+中介数定义为递增进位制数的翻转：$(a_{n}a_{n-1}...a_{2})\uparrow \rightarrow (a_{2}a_{3}...a_{n})\downarrow$
+
+故可直接得，递减进位制下83674521对应的中介数为：
+\[83674521 \rightarrow (1222447)\downarrow\]
+
+原中介数之前第2024个的新中介数为：
+\[(1222447)\downarrow -2024 = (1220423)\downarrow\]
+
+新中介数对应的递减进位制全排列为（从8到1依次逆推）：
+\[(1220423)\downarrow \rightarrow 36428715\]
+
+即递减进位制下 83674521 之前第2024个排列是 36428715。
+
+\section*{邻位对换法}
+
+中介数$(b_{2}b_{3}...b_{n})\downarrow$定义为：背向$i$的方向直到排列边界这个区间里比$i$小的数字的个数。其中方向的定义为：从$i=2$向左开始。如果$i$为奇数，其方向性决定于$b_{i-1}$的奇偶性，奇向右、偶向左。如果i为偶数，其方向性决定于$b_{i-1}+b_{i-2}$的奇偶性，同样是奇向右、偶向左。
+
+邻位对换下83674521对应的中介数为：
+\[83674521 \rightarrow (1012120)\downarrow\]
+
+注：中间步骤推导得到的$i$方向如下：
+\[\overset{\rightarrow}{8}\overset{\rightarrow}{3}\overset{\rightarrow}{6}\overset{\rightarrow}{7}\overset{\rightarrow}{4}\overset{\rightarrow}{5}\overset{\leftarrow}{2}1\]
+
+原中介数之前第2024个的新中介数为：
+\[(1012120)\downarrow -2024 = (1010064)\downarrow\]
+
+新中介数对应的邻位对换全排列为（从8到1依次逆推）：
+\[(1010064)\downarrow \rightarrow 76583421\]
+
+注：中间步骤推导得到的$i$方向如下：
+\[\overset{\leftarrow}{7}\overset{\rightarrow}{6}\overset{\rightarrow}{5}\overset{\leftarrow}{8}\overset{\rightarrow}{3}\overset{\rightarrow}{4}\overset{\leftarrow}{2}1\]
+
+即邻位对换下 83674521 之前第2024个排列是 76583421。
+
+
+\end{document}

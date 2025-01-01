@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+ 
+\begin{document}
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+ 
+\title{全排列作业}
+\maketitle
+\section{字典序法}
+83674521的中介数为7244221。$2024=2\cdot 6! + 4\cdot 5! + 4\cdot 4! + 1\cdot 3! + 1\cdot 2! + 0\cdot 1!.$因此2024的递增进位制数为244110。
+7244221-244110=7000111.
+中介数7000111对应的排列为81235674。
+所以83674521之前第2024个排列为81235674。
+\section{递增进位制数法}
+83674521的中介数为7442221。2024的递增进位制数为244110。
+7442221-244110=7153111。
+‌中介数7153111对应的排列为86253471。
+所以83674521之前第2024个排列为86253471。
+\section{递减进位制数法}
+83674521的中介数为1222447。2024的递减进位制数为11010。
+1222447-11010=1211437。
+‌中介数1211437对应的排列为83627451。
+所以83674521之前第2024个排列为83627451。
+\section{邻位对换法}
+83674521
+
+2向左，$b_2 = 1$
+
+3向右，$b_3 = 0$
+
+4向右，$b_4 = 1$
+
+5向右，$b_5 = 2$
+
+6向右，$b_6 = 1$
+
+7向右，$b_7 = 2$
+
+8向右，$b_8 = 0$
+
+% 中介数为$\overleftarrow{1}\overrightarrow{0}\overrightarrow{1}\overrightarrow{2}\overrightarrow{1}\overrightarrow{2}\overrightarrow{0}$。
+中介数为1012120。
+2024的递减进位制数为11010。
+1012120-11010=1001110。
+‌中介数1001110对应的排列为47632518。
+
+\end{document}

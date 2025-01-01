@@ -1,0 +1,288 @@
+% Homework template for Inference and Information
+% UPDATE: September 26, 2017 by Xiangxiang
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\ctexset{
+proofname = \heiti{证明}
+}
+\usepackage{amsmath, amssymb, amsthm}
+% amsmath: equation*, amssymb: mathbb, amsthm: proof
+\usepackage{moreenum}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs} % toprule
+\usepackage[mathcal]{eucal}
+\usepackage[thehwcnt = 1]{iidef}
+\usepackage[backend=bibtex]{biblatex}
+
+
+\thecourseinstitute{清华大学}
+\thecoursename{组合数学}
+\theterm{2024年秋季学期}
+\hwname{作业}
+\slname{\heiti{解}}
+\begin{document}
+\courseheader
+
+
+\begin{enumerate}
+  \setlength{\itemsep}{3\parskip}
+%第一题
+  \item 设有 $m$ 个男生和 $n$ 个女生排成一行（$m, n$ 均为正整数），若
+  \begin{enumerate}
+      \item 任何两个男生不相邻（即 $m \leq n + 1$）；
+      \item $n$ 个女生形成一个整体（即任何两个女生之间没有男生）；
+      \item 男生 $A$ 和女生 $B$ 相邻。
+  \end{enumerate}
+
+\begin{solution}
+  \begin{enumerate}
+    \item 先把$n$个女生排成一列，有$P(n,n)$种方案，女生列中一共有$n+1$个空格可以插入，再把$m$个男生插入排好的女生列中，有$P(n+1,m)$种方案，
+          所以总方案数为：\\
+          \begin{center}
+            $P(n,n)\times P(n+1,m)$ 
+          \end{center}
+          
+    \item 先把$n$个女生捆绑排序，有$P(n,n)$种方案，再将捆绑后的女生作为一个整体插入$m$个排好男生中，有$P(m,m)\times C(m+1,1)$种方案，
+          所以总方案数为：\\
+          \begin{center}
+            $P(n,n)\times P(m,m)\times C(m+1,1)$ 
+          \end{center}
+          
+    \item 先将同学$AB$捆绑，有2种可能，作为一个整体与其他同学进行排序，一共$m+n-1$个进行排序，有$P(m+n-1,m+n-1)$种方案，
+          所以总方案数为：
+          \begin{center}
+            $P(m+n-1,m+n-1)\times 2$ 
+          \end{center}
+             
+\end{enumerate}
+\end{solution}
+%第二题
+\item 6个男生和5个女生围在一圆桌旁, 若
+\begin{enumerate}
+      \item 任何两个女生不相邻;
+      \item 所有女生形成一个整体;
+      \item 女生 A两侧均是男生.
+      分别讨论有多少种方案
+\end{enumerate}
+
+\begin{solution}
+      \begin{enumerate}
+        \item 先把$6$个男生围成一圈，相当于圆排列，有$\frac{P(6,6)}{6}$种方案，为了达到任意两个女生不相邻，
+              将女生插入男生的空格中，对于每一种男生圆排列，一共有六个空格，所以此时女生可以插入的排列数为$P(6,5)$种，
+              所以总方案数为：\\
+              \begin{center}
+                  $\frac{P(6,6)}{6}\times P(6,5)=\frac{6!}{6}\times \frac{6!}{1!}=86400$ 
+              \end{center}
+              
+        \item 先把$5$个女生捆绑当成一个整体，有$P(5,5)$种,再与$6$个男生一起进行圆排列，有$\frac{P(7,7)}{7}$种方案，
+              所以总方案数为：\\
+              \begin{center}
+            $P(5,5)\times \frac{P(7,7)}{7}=86400$ 
+              \end{center}
+        \item 先将同学$A$与其左右的两个男生捆绑，先从$6$个男生选两个且存在顺序，有$C(6,2)\times P(2,2)$种可能，3个人作为一个整体与其他8个同学进行圆排序，一共$\frac{P(9,9)}{9}$种，
+              所以总方案数为：\\
+              \begin{center}
+            $C(6,2)\times P(2,2)\times \frac{P(9,9)}{9}=1209600$
+              \end{center}
+    \end{enumerate}
+\end{solution}
+
+%第三题
+\item 计算$\sum_{k=1}^nk\cdot k!=1\cdot1!+2\cdot2!+\cdots+n\cdot n!$ 
+\begin{solution}
+      \begin{enumerate}
+            猜测原式等于$\sum_{k=1}^nk\cdot k!=(n+1)!-1$,用数学归纳法证明:\\
+            (1)归纳奠基：\\当n=1时得，$\sum_{k=1}^1k\cdot k!=1=(1+1)!-1$命题成立；\\ 
+            (2)归纳假设：\\假设当n=k时命题成立,即$\sum_{k=1}^nk\cdot k!=(n+1)!-1$；\\ 
+            (3)归纳递推：\\
+            当n=k+1时，原式为:
+            \begin{align*}
+                  \sum_{k=1}^{n+1}k\cdot k!&=\sum_{k=1}^nk\cdot k!+(n+1)\cdot (n+1)! \\
+                  &=(n+1)!-1+(n+1)\cdot (n+1)!\\
+                  &=(n+2)\cdot (n+1)!-1\\
+                  &=(n+2)!-1
+            \end{align*}
+            即命题也成立\\
+            所以原式$\sum_{k=1}^nk\cdot k!=(n+1)!-1$
+    \end{enumerate}
+\end{solution}
+
+%第四题
+\item 求$10^{40}$与$20^{30}$的公因数的数目
+\begin{solution}
+      \begin{enumerate}
+      将$10^{40}$与$20^{30}$因式分解：
+      $10^{40}=2^{40}\cdot 5^{40},20^{30}=2^{60}\cdot 5^{30}$,
+      \\所以最大公因数为$2^{40}\cdot 5^{30}$，
+      即原命题可以等价于在40个2中选几个2，在30个5中选几个5相乘组成的公因式的数目，而选择几个2有41种选法，选择几个5有31种选法，
+      所以公因数的数目一共有$31*41=1271$个。
+     \end{enumerate}
+\end{solution}
+
+%第五题
+\item 求从1到1000000的整数的十进制表示中，数字0出现的总次数
+\begin{solution}
+      \begin{enumerate}
+      (1)当整数为1位时，数字0出现的次数为0；\\
+      (2)当整数为2位时，数字0只能在个位，出现的次数为9；\\
+      (3)当整数为3位时，数字0出现在个、十位，百位为$1\sim9$，出现的次数为:\\
+      \begin{center}
+            $9\cdot (C(2,1)\cdot 9+1\cdot 2)$\\
+      \end{center}
+      (4)当整数为4位时，数字0出现在个、十和百位，千位为$1\sim9$，出现的次数为:\\
+      \begin{center}
+             $9\cdot (C(3,1)\cdot 9\cdot 9+C(3,2)\cdot 9\cdot 2+1\cdot 3)$\\
+      \end{center}
+      (5)当整数为5位时，数字0出现在个、十、百和千位，万位为$1\sim9$，出现的次数为:\\
+      \begin{center}
+            $9\cdot (C(4,1)\cdot 9^3+C(4,2)\cdot 9^2\cdot 2+C(4,3)\cdot 9\cdot 3+1\cdot 4)$\\
+      \end{center}
+      (6)当整数为6位时，数字0出现在个、十、百、千和万位，十万位为$1\sim9$，出现的次数为:\\
+      \begin{center}
+            $9\cdot (C(5,1)\cdot 9^4+C(5,2)\cdot 9^3\cdot 2+C(5,3)\cdot 9^2\cdot 3+C(5,4)\cdot 9\cdot 4+1\cdot 5)$\\
+      \end{center}
+      (7)当整数为7位时，数字0出现的次数为6；\\   
+      所以对应数字0出现的总次数为情况$(1)\sim(7)$的累加和，即488895；  
+\end{enumerate}
+\end{solution}
+
+%第六题
+\item 将 $n$ 个相同的小球放入 $r$ 个不同的盒子中 ($n \geq r$)，禁止出现空盒，求方案数。
+\begin{solution}
+      \begin{enumerate}
+      为了防止空盒，先给r个盒子中各放一个，将剩下的$n-r$个球和$r-1$隔板一起排列，所以方案数为:\\
+      \begin{center}
+          $C(n-r+r-1,r-1)=C(n-1,r-1)$    
+      \end{center}
+      
+\end{enumerate}
+\end{solution}
+
+%第七题
+\item 将 $n$ 个相同的小球放入 $r$ 个不同的盒子中，每个盒子中至少有 $k$ 个球（$n \geq rk$），求方案数。
+\begin{solution}
+      \begin{enumerate}
+      为了保证每个盒子至少有k个球，先给r个盒子中各放k个，将剩下的$n-rk$个球和$r-1$隔板一起排列，所以方案数为:\\
+      \begin{center}
+           $C(n-rk+r-1,r-1)$   
+      \end{center}
+      
+\end{enumerate}
+\end{solution}
+
+%第八题
+\item 8 个盒子排成一列，将5个不同的小球放入这些盒子，要求空盒不相邻，求方案数。
+\begin{solution}
+      \begin{enumerate}
+      为了保证空盒不相邻可以分为两种情况，5个小球分别放入四个盒子和五个盒子：\\
+      (1)五个小球放入四个盒子：一个盒子放2个球，其他三个盒子放1个球，将其余的四个盒子插入其中，方案数为:\\
+      \begin{center}
+            $C(5,2)\cdot P(4,4)\cdot C(5,4)=10\cdot 4!\cdot 5=1200$\\
+      \end{center}
+      
+      (2)五个小球放入五个盒子： 五个小球进行排列后，将其余的三个盒子插入其中，方案数为:\\
+      \begin{center}
+         $P(5,5)\cdot C(6,3)=5!\cdot 20=2400$ \\   
+      \end{center}
+      
+      总共的方案数为1200+2400=3600种。
+\end{enumerate}
+\end{solution}
+
+%第九题
+\item 设 $A = \{(a,b) \mid a, b \in \mathbb{Z}, 0 \leq a \leq 9, 0 \leq b \leq 5\}$
+\begin{enumerate}
+      \item 求 $xOy$ 平面上以 $A$ 中的点为四个顶点、四边与坐标轴平行的长方形数目；
+      \item 求 $xOy$ 平面上以 $A$ 中的点为四个顶点、四边与坐标轴平行的正方形数目。
+\end{enumerate}
+
+\begin{solution}
+      \begin{enumerate}
+      因为a，b均为整数，a的可能取值$0\sim9$，b的可能取值$0\sim5$：\\
+      (1)长方形可以由左下右上对角线的两个顶点确定：若左下顶点坐标为$(i,j)$，则可选的右上顶点数为$(9-i)\cdot (5-j)$\\
+      所以总方案数为：$\sum_{i=0}^9\sum_{j=0}^5(9-i)\cdot (5-j)=(9+……+1)(5+……+1)=675$\\
+      (2)正方形的个数可以使用面积计算\\可能正方形面积为$1,4,9,16,25$\\
+      每个面积对应的正方形个数为：$9\cdot 5,8\cdot 4, 7\cdot 3, 6\cdot 2,5\cdot 1$\\
+      所以总正方形数目为$45+32+21+12+5=115$。
+\end{enumerate}
+\end{solution}
+
+%第10题
+\item 分别求从如下多重集中选取 $n$ 个元素的方案数：
+\begin{enumerate}
+      \item 大小为 $2n$ 的多重集 $\{n \cdot 0, 1, 2, \dots, n\}$；
+      \item 大小为 $3n + 1$ 的多重集 $\{n \cdot 0, 1, 2, \dots, 2n + 1\}$。
+\end{enumerate}
+
+\begin{solution}
+      \begin{enumerate}
+      (1)原命题相当于从n个0中选i个，从$1\sim n$中选$n-i$个，方案数为$C(n,n-i)$,
+      所以总方案数为：\\
+      \begin{center}
+            $\sum_{i=0}^nC(n,n-i)=(1+1)^n=2^n$\\
+      \end{center}
+      
+      (2)类似的，原命题相当于从$n$个0中选$i$个，从$1\sim 2n+1$中选$n-i$个，方案数为$C(2n+1,n-i)$,
+      所以总方案数为：\\
+      \begin{center}
+            $\sum_{i=0}^{n}C(2n+1,n-i)=\frac{(1+1)^{2n+1}}{2}=2^{2n}$
+      \end{center}
+    
+\end{enumerate}
+\end{solution}
+
+%第11题
+\item 5台教学机器编号为 1, 2, 3, 4, 5，分配给 $m$ 名学生使用，且使用第 1 台和第 2 台的人数相等，求分配方案数。
+
+\begin{solution}
+      \begin{enumerate}
+      假设第1台和第2台的使用人数都为$i$，剩下$m-2i$名学生可以随意在编号3，4，5中选择，所以总方案数为：\\
+      假设$m$为偶数：
+      \begin{center}
+            $\sum_{i=0}^{\frac{m}{2}}C(2i,i)\cdot C(m,2i)\cdot 3^{m-2i}$\\
+      \end{center}
+      假设$m$为奇数：
+      \begin{center}
+            $\sum_{i=0}^{\frac{m-1}{2}}C(2i,i)\cdot C(m,2i)\cdot 3^{m-2i}$\\
+      \end{center}
+    
+\end{enumerate}
+\end{solution}
+
+%第12题
+\item 由 $n$ 个 0 和 $n$ 个 1 构成的 $2n$ 位二进制串，要求任意前 $k$ 位中 0 的数目不少于 1 的数目（$1 \leq k \leq 2n$），求满足要求的二进制串的数目。
+
+\begin{solution}
+      \begin{enumerate}
+      原命题可以等价格路模型，从点$(0,0)$出发，沿$x$轴或$y$轴的正方向每步走一个单位，最终走到$(n,n)$，要求走过的路不能穿过$y=x$。
+      从点$(0,0)$出发走到$(n,n)$的总方案数为：
+      \begin{center}
+            $C(2n,n)$\\
+       \end{center}
+      
+      走过的路不能穿过$y=x$等价于走过的路不能接触$y=x+1$；
+      将$(0,0)$关于$y=x+1$对称,得到对称点$(-1,1)$。不符合的方案等价于从点$(-1,1)$出发走到$(n,n)$，方案数为：$C(2n,n-1)$
+      所以总方案数为：
+
+      \begin{center}
+           $C(2n,n)-C(2n,n-1)$\\
+      \end{center}
+
+    
+      \end{enumerate}
+\end{solution}
+
+
+\end{enumerate}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: late\rvx
+%%% TeX-master: t
+%%% End:

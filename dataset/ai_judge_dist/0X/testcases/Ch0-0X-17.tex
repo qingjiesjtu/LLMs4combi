@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[a4paper]{geometry}
+
+\title{组合数学\quad 全排列作业}
+
+\begin{document}
+
+\maketitle
+
+\section{字典序法}
+首先计算 83674521 的中介数：$(7244221)\uparrow$。同样需要将 2024 化为递减进位制数：
+\begin{equation}
+    2024=2\times 6!+4\times 5!+4\times 4!+1\times 3!+1\times 2!.
+\end{equation}
+故 $2024=(24411)\uparrow$，
+\begin{equation}
+    (7244221)\uparrow - (24411)\uparrow = (7214210)\uparrow.
+\end{equation}
+最后从中介数 $(7214210)\uparrow$ 还原排列：
+\begin{itemize}
+    \item 第一位右侧有 7 个比它小，故第一位为 8;
+    \item 第二位右侧有 2 个比它小，故第二位为 3;
+    \item 第三位右侧有 1 个比它小，故第三位为 2;
+    \item 第四位右侧有 4 个比它小，跳过已经出现的 2,3，故第四位为 7;
+    \item 第五位右侧有 2 个比它小，跳过已经出现的 2,3，故第五位为 5;
+    \item 第六位右侧有 1 个比它小，跳过已经出现的 2,3, 故第六位为 4;
+    \item 第七位右侧有 0 个比它小，故第七位为 1;
+    \item 第八位为 6。
+\end{itemize}
+故所求排列为 83275416。
+
+\section{递增进位制数法}
+首先将排列 83674521 转换为 $(a_8a_7\cdots a_2)\uparrow$，其中 $a_i$ 表示数字 $i$ 右边比 $i$ 小的数的个数：$(7442221)\uparrow$。由上一问得知 $2024=(24411)\uparrow$，
+\begin{equation}
+    (7442221)\uparrow - (24411)\uparrow = (7412210)\uparrow.
+\end{equation}
+将 $(7412210)\uparrow$ 还原为排列：
+\begin{itemize}
+    \item 8 右侧有 7 个比它小，故为 $8xxxxxxx$;
+    \item 7 右侧有 4 个比它小，故为 $8xx7xxxx$;
+    \item 6 右侧有 1 个比它小，故为 $8xx7xx6x$;
+    \item 5 右侧有 2 个比它小，故为 $8xx75x6x$;
+    \item 4 右侧有 2 个比它小，故为 $8x475x6x$;
+    \item 3 右侧有 1 个比它小，故为 $8x47536x$;
+    \item 2 右侧有 0 个比它小，故为 $8x475362$。
+\end{itemize}
+于是对应的排列为 $81475362$。
+
+\section{递减进位制数法}
+首先将排列 83674521 转换为 $(a_2a_3\cdots a_8)\downarrow$，其中 $a_i$ 表示数字 $i$ 右边比 $i$ 小的数的个数：$(1222447)\downarrow$。接下来将 2024 转为递减进位制：
+\begin{equation}
+    2024 = (((1\times 5 + 1)\times 6 + 0)\times 7 + 1) \times 8 + 0
+\end{equation}
+故 $2024=(0011010)\downarrow$。
+\begin{equation}
+    (1222447)\downarrow-(0011010)\downarrow=(1211437)\downarrow。
+\end{equation}
+将 $(1211437)\downarrow$ 还原为排列：
+\begin{itemize}
+    \item 8 右侧有 7 个比它小，故为 $8xxxxxxx$;
+    \item 7 右侧有 3 个比它小，故为 $8xxx7xxx$;
+    \item 6 右侧有 4 个比它小，故为 $8x6x7xxx$;
+    \item 5 右侧有 1 个比它小，故为 $8x6x7x5x$;
+    \item 4 右侧有 1 个比它小，故为 $8x6x745x$;
+    \item 3 右侧有 2 个比它小，故为 $836x745x$;
+    \item 2 右侧有 1 个比它小，故为 $8362745x$。
+\end{itemize}
+故所求排列为 $83627451$。
+
+\section{邻位对换法}
+首先计算 83674521 的中介数 $(b_2b_3\cdots b_8)\downarrow$：
+\begin{itemize}
+    \item 2 向左，$b_2=1$;
+    \item 3 向右，$b_3=0$;
+    \item 4 向右，$b_4=1$;
+    \item 5 向右，$b_5=2$;
+    \item 6 向右，$b_6=1$;
+    \item 7 向右，$b_7=2$;
+    \item 8 向右，$b_8=0$。
+\end{itemize}
+由上一问，$2024=(0011010)\downarrow$，
+\begin{equation}
+    (1012120)\downarrow-(0011010)\downarrow=(1001110)\downarrow.
+\end{equation}
+接下来还原为排列：
+\begin{itemize}
+    \item 8 向左，$b_8=0$，故为 $8xxxxxxx$;
+    \item 7 向右，$b_7=1$，故为 $8x7xxxxx$;
+    \item 6 向右，$b_6=1$，故为 $8x76xxxx$;
+    \item 5 向左，$b_5=1$，故为 $8x76xx5x$;
+    \item 4 向右，$b_4=0$，故为 $8476xx5x$;
+    \item 3 向右，$b_3=0$，故为 $84763x5x$;
+    \item 2 向左，$b_2=1$，故为 $8476325x$。
+\end{itemize}
+故所求排列为 $84763251$。
+
+\end{document}

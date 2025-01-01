@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{ctex} % Required for inserting images}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\xeCJKsetup{CJKmath=true} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\linespread{1.5}
+\begin{center}
+    \Large\heiti{第二章作业（基本）}
+\end{center}
+\textbf{2.1}证明：\\
+设此命题不真。\(\left \lceil 326 \right \rceil =66\)，故有一个子集至少有66个数，设A={\(a_{1},a_{2},...,a_{66}\)}\(\subseteq P_{1}\)，A中元素从小到大排列。\\
+令\(b_{i-1}= a_{i}-a_{1},i=2,...,66\)，B={\(b_{1},b_{2},...,b_{65}\)},B\(\in [1,326]\).\\
+由反证法假设得B\(\subseteq (P_{2}\cup P_{3}\cup P_{4}\cup P_{5} )\).\\
+因为\(\left \lceil \frac{65}{4} \right \rceil =17\)，设\({b_{1},...,b_{17}}\subseteq P_{2}\),\\
+令\(c_{i-1}= b_{i}-b_{1},i=2,...,17\)，C={\(c_{1},...,c_{16}\)},C\(\in [1,326]\),\\
+由反证法假设得C\(\subseteq P_{3}\cup P_{4}\cup P_{5} )\).\\
+因为\(\left \lceil \frac{16}{3} \right \rceil =6\)，设\({c_{1},...,c_{6}}\subseteq P_{3}\),\\
+令\(d_{i-1}= c_{i}-c_{1},i=2,...,6\)，D={\(d_{1},...,c_{5}\)},D\(\in [1,326]\),\\
+由反证法假设得D\(\subseteq P_{4}\cup P_{5} )\).\\
+因为\(\left \lceil \frac{5}{2} \right \rceil =3\)，设\({d_{1},d_{2},d_{3}}\subseteq P_{5}\),\\
+令\(f_{i-1}= d_{i}-d_{1},i=2,3\)，F={\(f_{1},f_{2}\)},F\(\in [1,326]\),\\
+由反证法假设得F\(\subseteq P_{5}\).\\
+由反证法假设得\(f_{2}-f_{1} \notin (P_{1} \cup P_{2}\cup P_{3}\cup P_{4}\cup P_{5})\),但\(f_{2}-f_{1} \in [1,326]\)，矛盾，故命题为真.\\
+\textbf{2.2}证明：\\
+对\(\forall k\in A\)，\(\arctan k\in (-\frac{\pi}{2},\frac{\pi}{2})\).\\
+将区间\((-\frac{\pi}{2},\frac{\pi}{2})\)均分为12个子区间，13个\(arctan k\)飞入，至少有一个区间里有2个，设为\(arctan x\)和\(arctan y\)，令\(\arctan x>\arctan y\).\\
+设\(\tan a=x\)，\(\tan b=y\),\(arctan x-arctan y\le \frac{\pi }{12} \).\\
+则\(\tan(a-b)=\frac{x-y}{1+xy}\le \tan\frac{\pi }{12}=2-\sqrt{3}\).\\
+\textbf{2.3}证明：\\
+对于每一列，至少有1种颜色用了两次,设该颜色在该列中的行数为\(R_{i1}和R_{i2} \). \\
+\(R_{i1}和R_{i2}\)的取法有\(\binom{m+1}{2}\)种，表格共有\([m\binom{m+1}{2}+1]\)列，至少有一种取法用了m+1次.\\
+共有m种颜色，至少有1种颜色在两个不同列上的取法相同，即\(R_{i1}=R_{j1}，R_{i2}=R_{j2}\)，即构成一个矩形的四角.\\
+\textbf{2.4}证明：\\
+按照正整数的最后一位将其分为6类：{末位为0},{末位为1或9}，{末位为2或8}，{末位为3或7}，{末位为4或6}，{末位为5}.\\
+7个正整数飞入6个巢，至少有一类里面包含2个数a和b，a-b或a+b为10的倍数。\\
+\textbf{2.5}证明：\\
+
+\end{document}

@@ -1,0 +1,113 @@
+% Homework template for Inference and Information
+% UPDATE: September 26, 2017 by Xiangxiang
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\ctexset{
+proofname = \heiti{证明}
+}
+\usepackage{amsmath, amssymb, amsthm}
+% amsmath: equation*, amssymb: mathbb, amsthm: proof
+\usepackage{moreenum}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs} % toprule
+\usepackage[mathcal]{eucal}
+\usepackage[thehwcnt = 1]{iidef}
+
+\usepackage{ctex}
+
+\thecourseinstitute{清华大学计算机系}
+\thecoursename{组合数学}
+\theterm{2024年秋季学期}
+
+\slname{\heiti{解}}
+\begin{document}
+\courseheader
+
+\begin{enumerate}
+
+2.1
+
+\begin{solution}
+反证法
+不妨设存在划分集合的方式，使得最终不存在某个集合中有两个元素的差也属于该集合。记划分成的5个集合为$P_1,P_2,P_3,P_4,P_5$，由于$P_1\cup P_2\cup P_3\cup P_4\cup P_5 = \{1,2,...,326\}$，所以存在一个集合，其中包含至少$[\frac{326-1}{5}]+1 = 66$个元素。不妨假设满足该条件的集合为$P_1$，并且这66个元素按照严格递增顺序为$a_1,a_2,...,a_{66}$。相应的，记$b_1 = a_2 - a_1, b_2 = a_3 - a_1,..., b_{65} = a_{66} - a_1$，那么得到集合$B = \{b_1,b_2,...,b_65 \}$。如果这65个元素中存在任何一个元素属于$P_1$，那么直接矛盾证毕。
+
+如果这65个元素中不存在任何一个元素属于$P_1$，那么至少有一个集合包含集合B中至少$[\frac{65-1}{4}]+1=17$个元素。相似的，记这17个元素按照严格递增的顺序为$b_{i_1}, b_{i_2},...,b_{i_{17}}$，记$c_1 = b_{i_2} - b_{i_1},...,c_{16} = b_{i_{17}} - b_{i_1}$，那么$c_{j} = b_{i_{j+1}} - b_{i_1} = a_{i_{j+1}} - a_{i_1+1}$，那么得到集合$C = \{c_1,c_2,...,c_{16}\}$。如果$C\cap (P_1 \cup P_2) \neq \phi$，那么证毕。
+
+否则，$C \subset P_3 \cap P_4 \cap P_5$，那么自少有一个集合包含集合C中至少$[\frac{16-1}{3}]+1 = 6$个元素。相似的，记这6个元素按照严格递增的顺序为$C_{k_1},...,c_{k_6}$，记$d_1 = c_{k_2} - c_{k_1},...,d_5 = c_{k_6}-c_{k_1}$，那么$d_j = c_{k_{j+1}} - c_{k_1} = a_{i_{k_{j+1}+1}} - a_{i_{k_1+1}}$，那么得到集合$D = \{d_1,...,d_5 \}$。如果$D\cap (P_1\cup P_2 \cup P_3) \neq \phi$，那么证毕。
+
+否则，至少有一个集合含有集合D中至少$[\frac{5-1}{2}]+1=3$个元素，设这个集合为$P_4$，完全相同去构造集合$E, s.t. e_1 = d_{l_2} - d_{l_1}, e_2 = d_{l_3} - d_{l_1}$。如果$E \cap (P_1\cup P_2 \cup P_3 \cup P_4) \neq \phi$，那么证毕。
+
+否则，$E \subset P_5$，即$e_1,e_2 \in P_5$，然而$e_2 - e_1\in P_5$，所以矛盾，证毕，即一定存在某个集合中有两个元素的差也属于该集合。
+
+
+
+\end{solution}
+
+2.2
+
+\begin{solution}
+因为集合A包含13个互不相等的实数，不妨记为$a_1,...,a_{13}$，那么可以找到$$tan\theta_i = a_i, \theta_i \in (-\frac{\pi}{2}, \frac{\pi}{2}) $$
+那么有$$ \frac{a_i-a_j}{1+a_ia_j} = \frac{tan\theta_i-tan\theta_j}{1+tan\theta_itan\theta_j} = tan(\theta_i - \theta_j)$$
+将 $(-\frac{\pi}{2}, \frac{\pi}{2})$等分成12份，那么 $$\exists i,j,s.t. 0<\theta_i-\theta_i \leq \frac{\pi}{12}$$
+那么有$$0< tan(\theta_i-\theta_j) =   \frac{a_i-a_j}{1+a_ia_j} = \leq 2-\sqrt{3} $$
+证毕
+\end{solution}
+
+
+2.3
+
+\begin{solution}
+
+对每一列而言，总共有$m+1$个方格，当这$m+1$个方格是需要$m$染色的，那么至少存在两个方格颜色相同。
+
+那么我们分析，对一列$m+1$个方格从$m$个颜色中选一个颜色染在这一列的任意两个方格上，总共有多少种方案。显然，可以从$m$种颜色中选择一种颜色作为重复色块颜色，那么有$m C_{m+1}^{2}$种。我们现在有$mC_{m+1}^2+1$列，那么显然会出现两列，他们对应的一组重复色块颜色和行位置都相同，那么就可以组成一个矩形，其四角的方格染色相同。
+
+\end{solution}
+
+
+2.4
+\begin{solution}
+
+如果$\exists a,b \in N^+,s.t. a+b\neq 0 (mod\ 10), a - b \neq 0(mod\ 10)$，下面分情况讨论即可。
+
+如果$a=0(mod\ 10)$，那么$b\neq 0(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a=0(mod\ 10)$;
+
+如果$a=1(mod\ 10)$，那么$b\neq 1,9(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a= 1 or 9(mod\ 10)$;
+
+如果$a=2(mod\ 10)$，那么$b\neq 2,8(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a=2 or 8(mod\ 10)$;
+
+如果$a=3(mod\ 10)$，那么$b\neq 3,7(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a=3 or 7(mod\ 10)$;
+
+如果$a=4(mod\ 10)$，那么$b\neq 4,6(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a=4 or 6(mod\ 10)$;
+
+如果$a=5(mod\ 10)$，那么$b\neq 5(mod\ 10)$，也就是整数集$S$最多只能存在一个整数$a$，使得$a=5(mod\ 10)$;
+
+但是我现在有7个互不相同的正整数，那么根据鸽巢原理，会出现上述六种选择出现两个数，那自然就会出现$$a+b = 0 (mod\ 10)\ or\ a-b= 0 (mod\ 10)$$
+
+\end{solution}
+
+
+2.5
+
+\begin{solution}
+
+在十进制下，分数$\frac{p}{q}$有的可以表示为有限小数，需要证明的在于并不会出现无限不循环小数。同时，在其余任意进制下，需要增添说明什么时候可以表示为有限小数。
+
+对于$p\in Z, q\in Z^+,(p,q)=1$，对$p,q$进行质因数分解，可以写为$p = m_1^{k_1}...m_i^{k_i}, q = n_1^{l_1}...n_j^{l_j}$，其中$m_i, n_i$都是素数，同时因为$p,q$互素，所以$m_i, n_i$没有任何相同项。$\frac{p}{q}$可以写成有限小数的充要条件是$n_1,...,n_j \mid q$，反之无法写成有限小数，只能是无限小数。
+
+下面证明，当$n_1,...,n_j \nmid q$时，得到的是无限循环小数，不会出现无限不循环小数。考虑整数除法，每一步都会除以$q$得到一个余数，同时下一步进位后即余数乘进制基数后继续除以$q$，产生新的余数。显然$\forall n\in N\ mod\ q$的集合（我忘了专有名词了）显然是有限集，那么在进行足够多次整数除法后，余数显然会重复，后续除法结果也会重复，也就是得到的是无限循环小数。
+
+\end{solution}
+
+\end{enumerate}
+\end{document}
+
+%%% Local Variables:
+%%% mode: late\rvx
+%%% TeX-master: t
+%%% End:

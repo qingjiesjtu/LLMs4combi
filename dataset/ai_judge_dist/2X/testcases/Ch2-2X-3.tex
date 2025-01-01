@@ -1,0 +1,78 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{CTEX}
+\usepackage{geometry}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\geometry{left=2.0cm, right=2.0cm, top=3.0cm, bottom=3.0cm}
+\linespread{1.5}
+
+\begin{document}
+	
+	\begin{center}
+		{\large \textbf{组合数学第二章作业}}
+	\end{center}
+	
+	\noindent
+	\textbf{2.1}\\
+	证明：使用反证法，设此命题不真\\
+	即存在划分5个子集$(P_{1}\cup P_{2}\cup P_{3}\cup P_{4}\cup P_{5})=[1,326]$，\\
+	$P_{i}$中不存在一个数是$P_{i}$中两数之差，$i=1,2,3,4,5$,\\
+	①根据鸽巢原理推论，$\lceil\frac{326}{5}\rceil=66$，故有一子集至少为66个数，\\
+	设这66个数从小到大为$a_{1},a_{2},\dots,a_{66}$,\\
+	不妨设$A=\{a_{1},a_{2},\dots,a_{66}\}\subseteq P_{1}$。\\
+	令$b_{i-1}=a_{i}-a_{1},i=2,\dots,66$,\\
+	设$B=\{b_{1},b_{2},\dots,b_{65}\},B\in [1,326]$。\\
+	由反证法假设$B\cap P_{1}=\Phi$，因而$B\subset (P_{2}\cup P_{3}\cup P_{4}\cup P_{5})$。\\
+	②再根据鸽巢原理推论，$\lceil\frac{65}{4}\rceil=17$，故有一子集至少为17个数，\\
+	不妨设$\{b_{1},b_{2},\dots,b_{17}\}\subseteq P_{2}$。\\
+	令$c_{i-1}=b_{i}-b_{1},i=2,\dots,17$,\\
+	设$C=\{c_{1},c_{2},\dots,c_{16}\},C\in [1,326]$。\\
+	由反证法假设$C\cap (P_{1}\cup P_{2})=\Phi$，因而$C\subset (P_{3}\cup P_{4}\cup P_{5})$。\\
+	③再根据鸽巢原理推论，$\lceil\frac{16}{3}\rceil=6$，故有一子集至少为6个数，\\
+	不妨设$\{c_{1},c_{2},\dots,c_{6}\}\subseteq P_{3}$。\\
+	令$d_{i-1}=c_{i}-c_{1},i=2,\dots,6$,\\
+	设$D=\{d_{1},d_{2},\dots,d_{5}\},D\in [1,326]$。\\
+	由反证法假设$D\cap (P_{1}\cup P_{2}\cup P_{3})=\Phi$，因而$D\subset (P_{4}\cup P_{5})$。\\
+	④再根据鸽巢原理推论，$\lceil\frac{5}{2}\rceil=3$，故有一子集至少为3个数，\\
+	不妨设$\{d_{1},d_{2},d_{3}\}\subseteq P_{4}$。\\
+	令$e_{i-1}=d_{i}-d_{1},i=2,3$,\\
+	设$E=\{e_{1},e_{2}\},E\in [1,326]$。\\
+	由反证法假设$E\cap (P_{1}\cup P_{2}\cup P_{3}\cup P_{4})=\Phi$，因而$E\subset P_{5}$。\\
+	⑤由反证法假设$e_{2}-e_{1}\notin(P_{1}\cup P_{2}\cup P_{3}\cup P_{4})$且$e_{2}-e_{1}\notin P_{5}$,故$e_{2}-e_{1}\notin [1,326]$。\\
+	但显然$e_{2}-e_{1}\in [1,326]$，矛盾。故将原集合划分为5个子集，必有一个子集中有一数是同子集中的两数之差。\\
+	
+	\noindent
+	\textbf{2.2}\\
+	证明：\\
+	令$\theta=arctanx-arctany$,则$tan\theta=\frac{x-y}{1+xy}$,$\theta\in(-\frac{\pi}{2},\frac{\pi}{2})$。\\
+	将区间$(-\frac{\pi}{2},\frac{\pi}{2})$划分为12个小区间，每个区间长度为$\frac{\pi}{12}$。\\
+	集合A中有13个不等的实数，根据鸽巢原理，一定存在两个数x、y对应的$arctanx$、$arctany$落在同一小区间内。\\
+	设这两个数对应的角度分别为$\alpha$、$\beta$,则$0<\beta-\alpha<\frac{\pi}{12}$。\\
+	故$0<tan(\beta-\alpha)\leq tan\frac{\pi}{12}=2-\sqrt{3}$,即$0<\frac{x-y}{1+xy}\leq 2-\sqrt{3}$得证。\\
+	
+	\noindent
+	\textbf{2.3}\\
+	证明：\\
+	每列有m+1个方格，而只有m种颜色，那么根据鸽巢原理，每列必有2个方格的颜色相同。\\
+	这种情况下，每列涂色的可能方案数为$m\cdot C(m+1,2)$,而列数为$m\cdot C(m+1,2)+1$，则根据鸽巢原理，必有2列的2个同色方格对应位置相同。从而可构成矩形的四个角。\\
+	
+	\noindent
+	\textbf{2.4}\\
+	证明：\\
+	正整数被10除时的不同余数有10种，即$[0,9]$,\\
+	可以根据余数分为$\{[0]\},\{[5]\},\{[k],[10-k]\},1\leq k\leq 4$,共6个组，\\
+	因此根据鸽巢原理，7个正整数必有2个在同一组中，满足a+b或a-b能够被10整除。\\
+	
+	\noindent
+	\textbf{2.5}\\
+	证明：\\
+	设进制为b，每次除法运算得到的商为$a_{i}$，余数为$r_{i}$，$i=0,1,2,\cdots$，$0\leq r_{i}<q$，\\
+	则$p=a_{0}q+r_{0}$，$r_{i}b=a_{i+1}q+r_{i+1},i=0,1,2,\cdots$，\\
+	①当除法次数有限时，即为有限小数。\\
+	②当除法次数无限时，根据鸽巢原理，余数的个数为q-1（不含0，0出现即除法有限），而运算次数无限，因此一定会出现重复的余数。每个重复余数之后的运算与之前相同，会进入循环，故为无限循环小数。\\
+	综上，得证。\\
+	
+
+	
+	
+\end{document}
